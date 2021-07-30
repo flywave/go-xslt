@@ -3,7 +3,7 @@ package xslt_test
 import (
 	"fmt"
 
-	"github.com/wamuir/go-xslt"
+	"github.com/flywave/go-xslt"
 )
 
 func Example() {
