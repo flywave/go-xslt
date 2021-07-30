@@ -12,6 +12,7 @@ import "C"
 
 import (
 	"errors"
+	"runtime"
 	"unsafe"
 )
 
@@ -24,7 +25,7 @@ type Stylesheet struct {
 	ptr C.xslt_stylesheet_ptr
 }
 
-func (xs *Stylesheet) Close() {
+func (xs *Stylesheet) free() {
 	if xs.ptr != nil {
 		C.xslt_free_style(&xs.ptr)
 		xs.ptr = nil
@@ -32,7 +33,6 @@ func (xs *Stylesheet) Close() {
 }
 
 func (xs *Stylesheet) Transform(xml []byte) ([]byte, error) {
-
 	var (
 		cxml *C.char
 		cout *C.char
@@ -70,5 +70,7 @@ func NewStylesheet(xsl []byte) (*Stylesheet, error) {
 		return nil, ErrXSLParseFailure
 	}
 
-	return &Stylesheet{ptr: cssp}, nil
+	st := &Stylesheet{ptr: cssp}
+	runtime.SetFinalizer(st, (*Stylesheet).free)
+	return st, nil
 }
