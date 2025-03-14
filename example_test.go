@@ -55,7 +55,6 @@ func Example() {
 	if err != nil {
 		panic(err)
 	}
-	defer xs.Close()
 
 	res, err := xs.Transform(doc)
 	if err != nil {

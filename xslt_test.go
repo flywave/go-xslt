@@ -30,7 +30,6 @@ func TestNewStylesheet(t *testing.T) {
 	if xs1 == nil {
 		t.Errorf("xs1 = %v, want non-nil", xs1)
 	}
-	defer xs1.Close()
 
 	xs2, err := NewStylesheet(style2)
 	if err != nil {
@@ -39,7 +38,6 @@ func TestNewStylesheet(t *testing.T) {
 	if xs2 == nil {
 		t.Errorf("xs2 = %v, want non-nil", xs2)
 	}
-	defer xs2.Close()
 
 	xs3, err := NewStylesheet(nil)
 	if err != ErrXSLParseFailure {
@@ -59,10 +57,6 @@ func TestStylesheetClose(t *testing.T) {
 	if xs1 == nil {
 		t.Errorf("xs1 = %v, want non-nil", xs1)
 	}
-	xs1.Close()
-
-	xs2 := Stylesheet{}
-	xs2.Close()
 }
 
 func TestStylesheetTransform(t *testing.T) {
@@ -74,7 +68,6 @@ func TestStylesheetTransform(t *testing.T) {
 	if xs1 == nil {
 		t.Errorf("xs1 = %v, want non-nil", xs1)
 	}
-	defer xs1.Close()
 
 	res1, err := xs1.Transform(document)
 	if err != nil {
@@ -91,7 +84,6 @@ func TestStylesheetTransform(t *testing.T) {
 	if xs2 == nil {
 		t.Errorf("xs2 = %v, want non-nil", xs2)
 	}
-	defer xs2.Close()
 
 	res2, err := xs2.Transform(document)
 	if err != nil {
@@ -108,7 +100,6 @@ func TestStylesheetTransform(t *testing.T) {
 	if xs3 == nil {
 		t.Errorf("xs3 = %v, want non-nil", xs3)
 	}
-	defer xs3.Close()
 
 	res3, err := xs3.Transform(nil)
 	if err != ErrXSLTFailure {

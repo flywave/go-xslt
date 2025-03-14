@@ -3,11 +3,12 @@ package xslt
 // #include <stdlib.h>
 // #include <string.h>
 // #include "xslt.h"
-// #cgo CFLAGS: -I ./  -I ./libs
-// #cgo CXXFLAGS: -I ./ -I ./libs
-// #cgo linux LDFLAGS:  -L ./libs -Wl,--start-group -lcxslt -lstdc++ -lm -pthread -ldl -lxslt  -lxml2 -lzlib -licudata-xslt -licudt-xslt -licui18n-xslt -licutools-xslt -licuuc-xslt -Wl,--end-group
-// #cgo windows LDFLAGS: -L ./libs -lcxslt -lxslt -lxml2 -lzlib -licudata-xslt -licudt-xslt -licui18n-xslt -licutools-xslt -licuuc-xslt
-// #cgo darwin LDFLAGS: -L　./libs -lcxslt -lxslt -lxml2 -lzlib -licudata-xslt -licudt-xslt -licui18n-xslt -licutools-xslt -licuuc-xslt
+// #cgo CFLAGS: -I ./  -I ./lib
+// #cgo CXXFLAGS: -I ./ -I ./lib
+// #cgo linux LDFLAGS:  -L ./lib/linux -Wl,--start-group -lcxslt -lstdc++ -lm -pthread -ldl -lxslt  -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -Wl,--end-group
+// #cgo windows LDFLAGS: -L ./lib/windows -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc
+// #cgo darwin,amd64 LDFLAGS: -L　./lib/darwin -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -lc++
+// #cgo darwin,arm64 LDFLAGS: -L　./lib/darwin_arm -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -lc++
 import "C"
 
 import (
