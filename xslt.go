@@ -7,8 +7,8 @@ package xslt
 // #cgo CXXFLAGS: -I ./ -I ./lib
 // #cgo linux LDFLAGS:  -L ./lib/linux -Wl,--start-group -lcxslt -lstdc++ -lm -pthread -ldl -lxslt  -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -Wl,--end-group
 // #cgo windows LDFLAGS: -L ./lib/windows -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc
-// #cgo darwin,amd64 LDFLAGS: -L　./lib/darwin -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -lc++
-// #cgo darwin,arm64 LDFLAGS: -L　./lib/darwin_arm -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -lc++
+// #cgo darwin,amd64 LDFLAGS: -L ./lib/darwin -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -lc++
+// #cgo darwin,arm64 LDFLAGS: -L ./lib/darwin_arm -lcxslt -lxslt -lxml2 -lzlib -licudata -licudt -licui18n -licutools -licuuc -lc++
 import "C"
 
 import (
